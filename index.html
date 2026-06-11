@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1st Birthday – A Whole Year of Sunshine 🎀</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Pacifico&family=Playfair+Display:wght@700;800&family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink-hot: #e91e8c;
+      --pink-mid: #f06292;
+      --text-dark: #333;
+      --text-mid: #555;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(160deg, #fce4ec 0%, #fff9f0 40%, #f3e5f5 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--text-dark);
+    }
+
+    /* ── Flying butterflies ── */
+    .butterflies { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .butterfly {
+      position: absolute;
+      font-size: 1.4rem;
+      opacity: 0;
+      animation: flyDown linear infinite;
+    }
+    @keyframes flyDown {
+      0%   { transform: translateY(-60px) translateX(0px); opacity: 0; }
+      5%   { opacity: 0.75; }
+      48%  { transform: translateY(45vh) translateX(var(--dx1)); }
+      50%  { transform: translateY(48vh) translateX(var(--dx1)); }
+      95%  { opacity: 0.75; }
+      100% { transform: translateY(105vh) translateX(var(--dx2)); opacity: 0; }
+    }
+
+    /* ── Floating bows ── */
+    .bows { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+    .bow {
+      position: absolute;
+      font-size: 1.1rem;
+      opacity: 0.5;
+      animation: floatBow 6s ease-in-out infinite alternate;
+    }
+    @keyframes floatBow {
+      from { transform: translateY(0) rotate(-5deg); }
+      to   { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    /* ── Page sections ── */
+    section {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 780px;
+      margin: 0 auto; padding: 0 24px;
+    }
+
+    /* ── Hero ── */
+    .hero { position: relative; text-align: center; padding-top: 64px; padding-bottom: 48px; }
+    .hero-flow-lines {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 1;
+      width: min(100%, 480px);
+    }
+    .hero-flow-lines span {
+      display: block;
+      width: 92px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(233,30,140,0.95), rgba(156,39,176,0.7));
+      box-shadow: 0 8px 24px rgba(233,30,140,0.12);
+      animation: waveFloat 4.5s ease-in-out infinite alternate;
+    }
+    .hero-flow-lines span:nth-child(2) {
+      width: 124px;
+      background: linear-gradient(90deg, rgba(255,193,7,0.96), rgba(233,30,140,0.7));
+      animation-duration: 5s;
+    }
+    .hero-flow-lines span:nth-child(3) {
+      width: 84px;
+      background: linear-gradient(90deg, rgba(128,222,234,0.95), rgba(156,39,176,0.75));
+      animation-duration: 3.8s;
+    }
+    @keyframes waveFloat {
+      from { transform: translateY(-2px); }
+      to { transform: translateY(2px); }
+    }
+    .hero-eyebrow {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      font-style: italic;
+      color: #6a1b9a;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      text-transform: none;
+      line-height: 1.1;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(4rem, 11vw, 6rem);
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: 0.02em;
+      line-height: 0.95;
+      background: linear-gradient(135deg, #9c27b0 0%, #e91e8c 50%, #ff9800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 6px 18px rgba(156,39,176,0.08));
+    }
+    .hero-subtitle {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--pink-hot);
+      margin-top: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    /* Spinning dashed oval ring */
+    .one-wrapper {
+      position: relative;
+      display: inline-block;
+      padding: 18px 32px 12px;
+      perspective: 900px;
+    }
+    .one-wrapper svg.ring {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      overflow: visible;
+      pointer-events: none;
+      transform-origin: 50% 50%;
+      transform-style: preserve-3d;
+      will-change: transform;
+      animation: ring3D 28s ease-in-out infinite;
+    }
+    .one-wrapper svg.ring ellipse {
+      fill: none;
+      stroke: #f48fb1;
+      stroke-width: 0.9; /* thin subtle stroke */
+      stroke-linecap: round; /* small rounded dashes */
+      stroke-dasharray: 2 6; /* small short dash, closer gaps */
+      animation: spinRing 28s linear infinite; /* slow spin */
+      transform-origin: center;
+      filter: drop-shadow(0 6px 8px rgba(156,39,176,0.04));
+      opacity: 0.95;
+    }
+    @keyframes spinRing {
+      from { stroke-dashoffset: 0; }
+      to   { stroke-dashoffset: -120; }
+    }
+    @keyframes ring3D {
+      0%   { transform: translateY(-6px) rotateX(0deg) rotateZ(0deg) translateZ(0); }
+      50%  { transform: translateY(-3px) rotateX(6deg) rotateZ(180deg) translateZ(2px); }
+      100% { transform: translateY(-6px) rotateX(0deg) rotateZ(360deg) translateZ(0); }
+    }
+    .hero-one {
+      font-family: 'Pacifico', cursive;
+      font-size: clamp(4rem, 11vw, 6rem);
+      line-height: 1;
+      color: #8e24aa;
+      display: inline-block;
+      filter: drop-shadow(0 6px 20px rgba(142,36,170,0.14));
+      animation: pulse 3s ease-in-out infinite alternate;
+      position: relative; z-index: 1;
+    }
+    @keyframes pulse {
+      from { filter: drop-shadow(0 4px 12px rgba(233,30,140,0.18)); }
+      to   { filter: drop-shadow(0 8px 24px rgba(233,30,140,0.35)); }
+    }
+
+    /* ── Baby photo ── */
+    .photo-wrap {
+      display: flex; justify-content: center;
+      margin: 32px 0 0; position: relative;
+    }
+    .photo-oval {
+      width: 320px; height: 380px; border-radius: 50%;
+      border: 5px solid var(--pink-hot); overflow: hidden;
+      box-shadow: 0 12px 40px rgba(233,30,140,0.22);
+      background: #eee; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .photo-oval img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-placeholder { font-size: 3rem; color: #ccc; text-align: center; padding: 20px; }
+    .badge {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(90deg, #e91e8c, #ff9800);
+      color: #fff; font-weight: 800; font-size: 1rem;
+      padding: 7px 22px; border-radius: 30px; white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .emojis-row {
+      display: flex; justify-content: center;
+      gap: 24px; font-size: 1.8rem; margin-top: 20px;
+    }
+
+    /* ── Event card ── */
+    .event-card {
+      background: rgba(255,255,255,0.82); backdrop-filter: blur(8px);
+      border-radius: 24px; padding: 40px 32px 32px; margin: 40px 0;
+      box-shadow: 0 8px 32px rgba(233,30,140,0.08);
+      border: 1px solid rgba(233,30,140,0.12);
+    }
+    .card-dots { text-align: center; font-size: 1.2rem; margin-bottom: 28px; color: var(--pink-mid); letter-spacing: 6px; }
+    .event-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+      align-items: stretch;
+    }
+    .event-col {
+      text-align: center;
+      background: #fff;
+      border-radius: 32px;
+      padding: 34px 24px;
+      box-shadow: 0 22px 40px rgba(156,39,176,0.08);
+      border: 1px solid rgba(233,30,140,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 300px;
+    }
+    .event-col.time-card {
+      padding: 34px 24px;
+      align-items: center;
+      justify-content: center;
+    }
+    .event-icon { font-size: 2.8rem; margin-bottom: 16px; }
+    .event-label { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.18em; color: #9c27b0; text-transform: uppercase; margin-bottom: 14px; }
+    .event-main { font-size: 1.9rem; font-weight: 800; color: var(--text-dark); line-height: 1.1; }
+    .event-main span { display: block; font-size: 1.9rem; }
+    .event-accent { font-size: 1rem; font-weight: 700; color: var(--pink-hot); margin-top: 10px; }
+    .map-card {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.2fr) minmax(240px, 1fr);
+      gap: 22px;
+      margin-top: 24px;
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.94), rgba(252,228,236,0.96));
+      border-radius: 26px;
+      border: 1px solid rgba(233,30,140,0.14);
+      box-shadow: 0 14px 32px rgba(156,39,176,0.08);
+    }
+    .map-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #9c27b0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+    .map-details h3 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+      color: #6a1b9a;
+    }
+    .map-details p {
+      margin: 0.85rem 0;
+      color: #4a2c67;
+      line-height: 1.65;
+    }
+    .where-summary {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      margin-bottom: 18px;
+    }
+    .where-icon {
+      font-size: 1.4rem;
+      line-height: 1.2;
+    }
+    .where-address {
+      color: #5e2f74;
+      line-height: 1.5;
+      font-size: 0.98rem;
+    }
+    .map-actions { margin-top: 16px; }
+    .btn-map {
+      display: inline-block;
+      background: linear-gradient(90deg, #f06292, #9c27b0);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(233,30,140,0.18);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .btn-map:hover { opacity: 0.95; transform: translateY(-1px); }
+    .map-preview { border-radius: 20px; overflow: hidden; min-height: 220px; box-shadow: inset 0 0 0 1px rgba(233,30,140,0.1); }
+    .map-preview iframe { width: 100%; height: 100%; min-height: 220px; border: 0; display: block; }
+    .card-message {
+      text-align: center;
+      font-size: 1.08rem;
+      color: var(--text-dark);
+      line-height: 1.75;
+      margin-top: 18px;
+      padding: 26px 24px;
+      border-radius: 24px;
+      background: rgba(255, 242, 248, 0.9);
+      border: 1px solid rgba(233,30,140,0.14);
+      box-shadow: 0 18px 40px rgba(233,30,140,0.05);
+    }
+    .card-message span { display: inline-block; }
+    .card-message .celebrate { color: #d81b60; font-weight: 800; font-size: 1.05rem; }
+    .card-message .cake { color: #7b1fa2; font-weight: 800; font-size: 1.05rem; }
+    .card-message .dinner { color: #e91e8c; font-weight: 800; font-size: 1.05rem; }
+    .card-message .sparkle { color: #ffb300; font-size: 1.2rem; }
+
+    .where-section {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(233,30,140,0.1);
+    }
+    .where-label {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #9c27b0;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      margin-bottom: 16px;
+    }
+    .where-copy { color: #6a1b9a; line-height: 1.6; margin-bottom: 18px; }
+
+    .will-heading { text-align: center; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; color: var(--text-dark); margin: 48px 0 8px; }
+    .hosted { text-align: center; margin: 16px 0 32px; }
+    .hosted-label { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 6px; }
+    .hosted-names { font-size: 1.4rem; font-weight: 700; color: var(--pink-hot); }
+
+    /* ── RSVP ── */
+    .rsvp-card {
+      background: rgba(255,255,255,0.9); border-radius: 24px;
+      padding: 40px 32px; margin-bottom: 64px;
+      box-shadow: 0 8px 32px rgba(156,39,176,0.08);
+      border: 1px solid rgba(156,39,176,0.1);
+    }
+    .rsvp-title { text-align: center; font-family: 'Pacifico', cursive; font-size: 2.4rem; color: #9c27b0; margin-bottom: 6px; }
+    .rsvp-sub { text-align: center; font-size: 1rem; color: var(--pink-hot); font-weight: 600; margin-bottom: 32px; }
+    .field { margin-bottom: 22px; }
+    .field label { display: block; font-weight: 700; font-size: 0.9rem; color: #9c27b0; margin-bottom: 8px; }
+    .field input, .field select {
+      width: 100%; border: 1.5px solid #e1bee7; border-radius: 14px;
+      padding: 14px 18px; font-family: 'Nunito', sans-serif; font-size: 1rem;
+      color: var(--text-dark); background: #fafafa; outline: none;
+      transition: border-color 0.2s; appearance: none;
+    }
+    .field input:focus, .field select:focus { border-color: #9c27b0; background: #fff; }
+    .field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239c27b0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 18px center; padding-right: 44px; }
+
+    .btn-rsvp {
+      width: 100%; padding: 18px; border: none; border-radius: 50px;
+      background: linear-gradient(90deg, #e91e8c, #9c27b0); color: #fff;
+      font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 800;
+      cursor: pointer; letter-spacing: 0.04em; transition: opacity 0.2s, transform 0.15s;
+      box-shadow: 0 6px 24px rgba(233,30,140,0.3);
+    }
+    .btn-rsvp:hover { opacity: 0.92; transform: translateY(-2px); }
+    .btn-rsvp:active { transform: translateY(0); }
+
+    .success-msg { display: none; text-align: center; padding: 28px; font-size: 1.2rem; font-weight: 700; color: #9c27b0; }
+    .success-msg .big { font-size: 3rem; }
+
+    @media (max-width: 520px) {
+      .hero-one { font-size: 5.5rem; }
+      .event-grid { grid-template-columns: 1fr; gap: 20px 0; }
+      .divider-v { display: none; }
+      .map-card { grid-template-columns: 1fr; }
+      .rsvp-card { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Flying butterflies -->
+<div class="butterflies" id="butterflies" aria-hidden="true"></div>
+
+<!-- Floating bows -->
+<div class="bows" aria-hidden="true">
+  <span class="bow" style="top:5%;left:3%;animation-delay:0s;color:#f06292">🎀</span>
+  <span class="bow" style="top:12%;left:88%;animation-delay:1s;color:#ffd54f">🎀</span>
+  <span class="bow" style="top:30%;left:6%;animation-delay:2s;color:#ce93d8">🎀</span>
+  <span class="bow" style="top:22%;left:92%;animation-delay:0.5s;color:#80deea">🎀</span>
+  <span class="bow" style="top:48%;left:2%;animation-delay:1.5s;color:#f48fb1">🎀</span>
+  <span class="bow" style="top:55%;left:95%;animation-delay:2.5s;color:#ffd54f">🎀</span>
+  <span class="bow" style="top:70%;left:5%;animation-delay:0.8s;color:#80deea">🎀</span>
+  <span class="bow" style="top:75%;left:90%;animation-delay:1.8s;color:#f06292">🎀</span>
+  <span class="bow" style="top:88%;left:10%;animation-delay:3s;color:#ce93d8">🎀</span>
+  <span class="bow" style="top:92%;left:82%;animation-delay:2.2s;color:#ffd54f">🎀</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-flow-lines" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <p class="hero-eyebrow">You're invited to celebrate</p>
+  <p class="hero-name">Ishira</p>
+  <p class="hero-subtitle">is turning</p>
+
+  <div class="one-wrapper">
+    <!-- Animated dashed oval ring drawn with SVG -->
+    <svg class="ring" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <ellipse cx="50" cy="50" rx="48" ry="46"/>
+    </svg>
+    <div class="hero-one">ONE</div>
+  </div>
+  <div class="emojis-row" aria-hidden="true">🦋 &nbsp; 🦄</div>
+
+  <div class="photo-wrap">
+    <div class="photo-oval">
+      <img src="IshiBaby.png" alt="Ishi - 1st Birthday" loading="lazy">
+    </div>
+    <div class="badge">🎂 1st Birthday</div>
+  </div>
+</section>
+
+<!-- EVENT DETAILS -->
+<section>
+  <div class="event-card">
+    <div class="card-dots">• • •</div>
+    <div class="event-grid">
+      <div class="event-col">
+        <div class="event-icon">📅</div>
+        <div class="event-label">Date</div>
+        <div class="event-main">Saturday, July 5</div>
+      </div>
+      <div class="event-col time-card">
+        <div class="event-icon">🕒</div>
+        <div class="event-label">Time</div>
+        <div class="event-main">7:00 PM</div>
+        <div class="event-accent">Onwards</div>
+      </div>
+    </div>
+    <div class="card-dots">• • •</div>
+    <div class="where-section">
+      <div class="where-summary">
+        <div class="where-icon">📍</div>
+        <div class="where-address">
+          <span class="where-label">Where</span>
+          617 Skytop Drive, Cumming, GA 30040
+        </div>
+      </div>
+      <div class="map-card">
+        <div class="map-details">
+          <div class="map-tag">Location</div>
+          <p>Open the map for directions, parking hints, and the easiest route to the party.</p>
+          <div class="map-actions">
+            <a class="btn-map" href="https://www.google.com/maps/search/?api=1&query=617+Skytop+Drive+Cumming+GA+30040" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+          </div>
+        </div>
+        <div class="map-preview">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.898449081295!2d-84.21748172475891!3d34.21271578058357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f52c9ce6c6b4a7%3A0x3c1437b23dcc7b2e!2s617%20Skytop%20Dr%2C%20Cumming%2C%20GA%2030040%2C%20USA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <p class="card-message">
+      <span class="sparkle">🦄 ❤️</span> Please join us with your family for the <span class="celebrate">birthday celebration</span>,<br>
+      followed by <span class="cake">cake cutting</span> and <span class="dinner">dinner</span>. <span class="sparkle">🎂 ✨</span><br><br>🦋
+    </p>
+  </div>
+
+  <h2 class="will-heading">Will you be there? 🎉</h2>
+
+  <div class="hosted">
+    <div class="hosted-label">Hosted by</div>
+    <div class="hosted-names">Arpita &amp; Pankaj Pandey</div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section>
+  <div class="rsvp-card">
+    <div class="rsvp-title">RSVP</div>
+    <p class="rsvp-sub">We'd love to know if you can join the celebration! 🌸</p>
+
+    <div id="rsvp-form">
+      <div class="field">
+        <label for="name">Your Full Name *</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+      </div>
+      <div class="field">
+        <label for="attendance">Will you be attending?</label>
+        <select id="attendance">
+          <option value="Yes">Yes, I’ll attend</option>
+          <option value="No">No, I’m sorry I can’t make it</option>
+        </select>
+      </div>
+      <div class="field" id="guests-field">
+        <label for="guests">Number of Guests</label>
+        <select id="guests">
+          <option>1 Guest</option>
+          <option>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4 Guests</option>
+          <option>5+ Guests</option>
+        </select>
+      </div>
+      <button class="btn-rsvp" onclick="submitRSVP()">🌸 &nbsp;Confirm My RSVP</button>
+    </div>
+
+    <div class="success-msg" id="success">
+      <div class="big">🎉</div>
+      <p id="success-main">Yay! You're confirmed!</p>
+      <p id="success-detail" style="font-size:0.95rem;font-weight:400;color:#555;margin-top:8px">
+        We can't wait to celebrate with you on July 5th!<br>See you at 7:00 PM 🎂
+      </p>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // Initialize EmailJS - sign up at https://www.emailjs.com/ and get your IDs from the dashboard
+  const EMAILJS_SERVICE_ID = 'service_6wwp5fl';
+  const EMAILJS_TEMPLATE_ID = 'template_n510qdt';
+  const RECIPIENT_EMAIL = 'tpandey.arpi@gmail.com';
+
+  if (window.emailjs && typeof window.emailjs.init === 'function') {
+    window.emailjs.init('8nOk7hg2sfCTaUYD9');
+    console.log('EmailJS initialized:', window.emailjs);
+  } else {
+    console.warn('EmailJS library did not load. Check the network or script tag.');
+  }
+
+  const EMAILJS_CONFIGURED = !!(
+    window.emailjs &&
+    typeof window.emailjs.send === 'function' &&
+    EMAILJS_SERVICE_ID &&
+    EMAILJS_TEMPLATE_ID
+  );
+
+  const attendanceSelect = document.getElementById('attendance');
+  const guestsField = document.getElementById('guests-field');
+
+  function updateGuestsVisibility() {
+    guestsField.style.display = attendanceSelect.value === 'Yes' ? 'block' : 'none';
+  }
+
+  attendanceSelect.addEventListener('change', updateGuestsVisibility);
+  updateGuestsVisibility();
+
+  /* ── Flying butterflies ── */
+  const emojis = ['🦋','🦋','🦄','🌸', '🦄','🌺','✨'];
+  const container = document.getElementById('butterflies');
+  const count = 12;
+
+  for (let i = 0; i < count; i++) {
+    const b = document.createElement('span');
+    b.className = 'butterfly';
+    b.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    // Wider horizontal spread (2% - 98%) so butterflies can appear across full width
+    const left   = 2 + Math.random() * 96;                 // % from left (horizontal placement)
+    const topOff = -10 + Math.random() * 6;                // start slightly above viewport
+    // Reduce horizontal wobble so butterflies don't all shift left
+    const dx1    = (Math.random() - 0.5) * 80 + 'px';      // horizontal wobble mid
+    const dx2    = (Math.random() - 0.5) * 100 + 'px';     // horizontal wobble end
+    const dur    = 10 + Math.random() * 14;               // seconds
+    const delay  = -(Math.random() * dur);
+    const size   = 0.9 + Math.random() * 1.1;
+
+    b.style.cssText = `
+      left: ${left}%;
+      top: ${topOff}%;
+      font-size: ${size}rem;
+      --dx1: ${dx1};
+      --dx2: ${dx2};
+      animation-duration: ${dur}s;
+      animation-delay: ${delay}s;
+      transform: translateX(0); /* start centered at left position */
+    `;
+    container.appendChild(b);
+  }
+
+  /* ── RSVP submit with email ── */
+  function submitRSVP() {
+    const name = document.getElementById('name').value.trim();
+    const attendance = document.getElementById('attendance').value;
+    const guests = attendance === 'Yes' ? document.getElementById('guests').value : 'Not attending';
+
+    if (!name) {
+      alert('Please enter your name to RSVP!');
+      return;
+    }
+
+    // Send email via EmailJS if configured
+    const templateParams = {
+      name: name,
+      attendance: attendance,
+      guests: guests,
+      time: new Date().toLocaleString(),
+      email: '',
+      to_email: RECIPIENT_EMAIL,
+    };
+
+    // Check if EmailJS is properly initialized
+    if (EMAILJS_CONFIGURED) {
+      window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then((response) => {
+          console.log('Email sent successfully!', response);
+          updateSuccessMessage(attendance);
+          alert('RSVP confirmed! Email sent to tpandey.arpi@gmail.com.');
+          document.getElementById('rsvp-form').style.display = 'none';
+          document.getElementById('success').style.display = 'block';
+        })
+        .catch((error) => {
+          console.error('Email send failed:', error);
+          updateSuccessMessage(attendance);
+          alert('RSVP confirmed, but email send failed. Check the browser console for details.');
+          document.getElementById('rsvp-form').style.display = 'none';
+          document.getElementById('success').style.display = 'block';
+        });
+    } else {
+      console.error('EmailJS is not configured correctly:', {
+        emailjs: window.emailjs,
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        EMAILJS_CONFIGURED
+      });
+      updateSuccessMessage(attendance);
+      alert('RSVP confirmed! EmailJS is not configured yet or failed to load. Check the browser console for details.');
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('success').style.display = 'block';
+    }
+  }
+
+  function updateSuccessMessage(attendance) {
+    const main = document.getElementById('success-main');
+    const detail = document.getElementById('success-detail');
+
+    if (attendance === 'Yes') {
+      main.textContent = 'Yay! You’re confirmed!';
+      detail.innerHTML = 'We can\'t wait to celebrate with you on July 5th!<br>See you at 7:00 PM 🎂';
+    } else {
+      main.textContent = 'Thank you for letting us know.';
+      detail.innerHTML = 'We appreciate your RSVP and will miss you at the party. Wishing you a lovely day!';
+    }
+  }
+</script>
+</body>
+</html>
